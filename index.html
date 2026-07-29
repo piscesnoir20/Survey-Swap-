@@ -9,74 +9,124 @@
 </head>
 <body>
 
-  <!-- SIDEBAR TRÁI -->
-  <aside class="sidebar">
-    <div class="sidebar-top">
-      <div class="logo-box">
-        <div class="logo-icon">S</div>
-        <span class="logo-text">SurveySwap <span>AI</span></span>
+  <!-- MÀN HÌNH ĐĂNG NHẬP / ĐĂNG KÝ (HIỆN BAN ĐẦU) -->
+  <div id="auth-screen" class="auth-container">
+    <div class="auth-box">
+      <h2>Đăng ký tài khoản</h2>
+      <p style="color: #64748b; font-size: 14px; margin-bottom: 24px;">Chào mừng đến với <strong>SurveySwap AI</strong></p>
+      
+      <button class="btn-social" onclick="handleLogin()">Đăng ký bằng Google</button>
+      <button class="btn-social" onclick="handleLogin()">Đăng ký bằng Email trường</button>
+
+      <div style="margin: 20px 0; text-align: center; color: #94a3b8; font-size: 13px;">hoặc</div>
+
+      <div class="input-group">
+        <label>Họ và tên</label>
+        <input type="text" placeholder="Nhập họ và tên" value="Nguyễn Thu Trang">
+      </div>
+      <div class="input-group">
+        <label>Email trường</label>
+        <input type="email" placeholder="name@school.edu.vn" value="trang.nt@school.edu.vn">
+      </div>
+      
+      <button class="btn-submit" onclick="handleLogin()">Đăng ký & Nhận 5 Credit</button>
+
+      <div class="success-banner" style="margin-top: 16px;">
+        🎉 Đăng ký thành công! Bạn được tặng <strong>5 Credit</strong> khởi điểm.
+      </div>
+    </div>
+  </div>
+
+  <!-- GIAO DIỆN CHÍNH (ẨN ĐI KHI CHƯA ĐĂNG NHẬP) -->
+  <div id="main-app" class="main-app-container" style="display: none;">
+    <!-- SIDEBAR TRÁI -->
+    <aside class="sidebar">
+      <div class="sidebar-top">
+        <div class="logo-box">
+          <div class="logo-icon">S</div>
+          <span class="logo-text">SurveySwap <span>AI</span></span>
+        </div>
+
+        <nav class="nav-menu">
+          <a href="#" class="nav-item active" onclick="switchTab(event, 'dashboard')">📊 Dashboard</a>
+          <a href="#" class="nav-item" onclick="switchTab(event, 'exchange')">🔄 Survey Exchange Hub</a>
+          <a href="#" class="nav-item" onclick="switchTab(event, 'my-surveys')">📝 Khảo sát của tôi</a>
+          <a href="#" class="nav-item" onclick="switchTab(event, 'earn-credit')">🎁 Điền khảo sát nhận Credit</a>
+          <a href="#" class="nav-item" onclick="switchTab(event, 'ai-assistant')">🤖 AI Assistant / Quality Check</a>
+        </nav>
       </div>
 
-      <nav class="nav-menu">
-        <a href="#" class="nav-item active">📊 Dashboard</a>
-        <a href="#" class="nav-item">🔄 Survey Exchange Hub</a>
-        <a href="#" class="nav-item">📝 Khảo sát của tôi</a>
-        <a href="#" class="nav-item">🎁 Điền khảo sát nhận Credit</a>
-        <a href="#" class="nav-item">🤖 AI Assistant</a>
-      </nav>
-    </div>
-
-    <div class="credit-box">
-      <div class="credit-label">Số dư Credit</div>
-      <div class="credit-value">125 🪙</div>
-      <button class="btn-primary-small">Nạp thêm Credit</button>
-    </div>
-  </aside>
-
-  <!-- KHU VỰC NỘI DUNG CHÍNH -->
-  <main class="main-content">
-    
-    <!-- HEADER TRÊN -->
-    <header class="header">
-      <div class="search-box">
-        <input type="text" placeholder="Tìm kiếm khảo sát, chủ đề, lĩnh vực...">
-        <span class="search-icon">🔍</span>
+      <div class="credit-box">
+        <div class="credit-label">Số dư Credit</div>
+        <div class="credit-value">125 🪙</div>
+        <button class="btn-primary-small">Nạp thêm Credit</button>
       </div>
+    </aside>
 
-      <div class="user-section">
-        <div class="credit-badge">💰 125 Credit</div>
-        <div class="user-profile">
-          <div class="avatar">NT</div>
-          <div>
-            <div class="user-name">Nguyễn Thu Trang</div>
-            <div class="user-role">Sinh viên</div>
+    <!-- KHU VỰC NỘI DUNG CHÍNH -->
+    <main class="main-content">
+      <header class="header">
+        <div class="search-box">
+          <input type="text" placeholder="Tìm kiếm khảo sát, chủ đề, lĩnh vực...">
+          <span class="search-icon">🔍</span>
+        </div>
+
+        <div class="user-section">
+          <div class="credit-badge">💰 125 Credit</div>
+          <div class="user-profile">
+            <div class="avatar">NT</div>
+            <div>
+              <div class="user-name">Nguyễn Thu Trang</div>
+              <div class="user-role">Sinh viên</div>
+            </div>
           </div>
         </div>
-      </div>
-    </header>
+      </header>
 
-    <!-- NỘI DUNG TRANG (DASHBOARD) -->
-    <div class="content-body">
-      <h1>Xin chào, Nguyễn Thu Trang! 👋</h1>
-      <p class="subtitle">Cùng tiếp tục hành trình nghiên cứu của bạn hôm nay.</p>
-      
-      <div class="dashboard-grid">
-        <div class="card">
-          <h3>Số dư Credit</h3>
-          <div class="stat-number">125</div>
+      <div class="content-body">
+        <!-- 1. DASHBOARD -->
+        <div id="tab-dashboard" class="tab-pane">
+          <h1>Xin chào, Nguyễn Thu Trang! 👋</h1>
+          <p class="subtitle">Cùng tiếp tục hành trình nghiên cứu của bạn hôm nay.</p>
+          <div class="dashboard-grid">
+            <div class="card"><h3>Số dư Credit</h3><div class="stat-number">125 🪙</div></div>
+            <div class="card"><h3>Khảo sát đang tham gia</h3><div class="stat-number">3</div></div>
+            <div class="card"><h3>Phản hồi đã nhận</h3><div class="stat-number">85/100 mẫu</div></div>
+          </div>
         </div>
-        <div class="card">
-          <h3>Khảo sát đang tham gia</h3>
-          <div class="stat-number">3</div>
+
+        <!-- 2. EXCHANGE HUB -->
+        <div id="tab-exchange" class="tab-pane" style="display: none;">
+          <h1>Survey Exchange Hub 🔄</h1>
+          <p class="subtitle">Tham gia khảo sát của người khác để nhận Credit.</p>
+          <div class="card">
+            <h3>Thói quen học tập của sinh viên đại học</h3>
+            <p style="color: #64748b; font-size: 14px; margin: 8px 0;">⏱️ 10-12 phút | Cần thêm 45 phản hồi</p>
+            <button class="btn-primary-small" style="width: auto; padding: 6px 16px;">Tham gia khảo sát</button>
+          </div>
         </div>
-        <div class="card">
-          <h3>Phản hồi đã nhận</h3>
-          <div class="stat-number">85/100</div>
+
+        <!-- 3. KHẢO SÁT CỦA TÔI -->
+        <div id="tab-my-surveys" class="tab-pane" style="display: none;">
+          <h1>Khảo sát của tôi 📝</h1>
+          <p class="subtitle">Tạo và quản lý các khảo sát của bạn.</p>
+          <button class="btn-primary-small" style="width: auto; padding: 10px 20px; margin-bottom: 20px;">+ Tạo khảo sát mới</button>
+        </div>
+
+        <!-- 4. ĐIỀN KHẢO SÁT -->
+        <div id="tab-earn-credit" class="tab-pane" style="display: none;">
+          <h1>Điền khảo sát nhận Credit 🎁</h1>
+          <p class="subtitle">Tích lũy thêm số dư Credit cho tài khoản.</p>
+        </div>
+
+        <!-- 5. AI ASSISTANT -->
+        <div id="tab-ai-assistant" class="tab-pane" style="display: none;">
+          <h1>AI Assistant / Quality Check 🤖</h1>
+          <p class="subtitle">AI giúp bạn cải thiện chất lượng khảo sát.</p>
         </div>
       </div>
-    </div>
-
-  </main>
+    </main>
+  </div>
 
   <script src="script.js"></script>
 </body>
