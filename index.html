@@ -22,6 +22,17 @@
         <p>Đăng nhập vào tài khoản của bạn</p>
       </div>
 
+      <div class="social-login-group">
+        <button class="btn-social" onclick="handleDirectAccess()">
+          <span class="social-icon">🌐</span> Google
+        </button>
+        <button class="btn-social" onclick="handleDirectAccess()">
+          <span class="social-icon">📘</span> Facebook
+        </button>
+      </div>
+
+      <div class="divider"><span>hoặc đăng nhập bằng email</span></div>
+
       <div class="input-group">
         <label>Email</label>
         <input type="email" id="login-email" placeholder="email@example.com">
@@ -32,7 +43,7 @@
         <input type="password" id="login-password" placeholder="Nhập mật khẩu">
       </div>
 
-      <button class="btn-main" onclick="handleLoginSuccess()">Đăng nhập</button>
+      <button class="btn-main" onclick="handleDirectAccess()">Đăng nhập</button>
 
       <div class="auth-switch">
         Chưa có tài khoản? <span onclick="switchAuth('register')">Đăng ký ngay</span>
@@ -53,6 +64,17 @@
         <p>Nhanh chóng và hoàn toàn miễn phí</p>
       </div>
 
+      <div class="social-login-group">
+        <button class="btn-social" onclick="handleDirectAccess()">
+          <span class="social-icon">🌐</span> Google
+        </button>
+        <button class="btn-social" onclick="handleDirectAccess()">
+          <span class="social-icon">📘</span> Facebook
+        </button>
+      </div>
+
+      <div class="divider"><span>hoặc đăng ký bằng email</span></div>
+
       <div class="input-group">
         <label>Họ và tên</label>
         <input type="text" id="reg-name" placeholder="Nhập họ và tên">
@@ -68,7 +90,8 @@
         <input type="password" id="reg-password" placeholder="Tối thiểu 6 ký tự">
       </div>
 
-      <button class="btn-main" onclick="handleLoginSuccess()">Tạo tài khoản</button>
+      <!-- Nút tạo tài khoản sẽ chuyển hướng sang màn hình đăng nhập -->
+      <button class="btn-main" onclick="handleRegisterSubmit()">Tạo tài khoản</button>
 
       <div class="auth-switch">
         Đã có tài khoản? <span onclick="switchAuth('login')">Đăng nhập</span>
@@ -132,4 +155,3 @@
   <script src="script.js"></script>
 </body>
 </html>
-
