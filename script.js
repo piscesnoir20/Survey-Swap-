@@ -1,4 +1,4 @@
-// �?m b?o trang web t?i xong v� th�m hi?u ?ng click menu ��n gi?n
+// Ðảm bảo trang web tải xong và thêm hiệu ứng click menu đơn giản
 document.addEventListener("DOMContentLoaded", function () {
   const menuItems = document.querySelectorAll(".nav-item");
 
