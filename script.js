@@ -1,22 +1,34 @@
-// Hàm xử lý khi bấm Đăng ký / Đăng nhập thành công để chuyển vào Dashboard
-function handleLogin() {
-  document.getElementById('auth-screen').style.display = 'none';
-  document.getElementById('main-app').style.display = 'flex';
+// Chuyển đổi qua lại giữa màn hình Đăng nhập và Đăng ký
+function switchAuth(target) {
+  const loginScreen = document.getElementById('login-screen');
+  const registerScreen = document.getElementById('register-screen');
+
+  if (target === 'register') {
+    loginScreen.style.display = 'none';
+    registerScreen.style.display = 'flex';
+  } else {
+    registerScreen.style.display = 'none';
+    loginScreen.style.display = 'flex';
+  }
 }
 
-// Hàm chuyển đổi qua lại giữa các tab chức năng trong app
-function switchTab(event, tabId) {
-  event.preventDefault();
-  
-  // Ẩn tất cả các màn hình tab
-  const panes = document.querySelectorAll('.tab-pane');
-  panes.forEach(pane => pane.style.display = 'none');
+// Xử lý khi bấm Đăng ký thành công: Tự động chuyển hướng sang màn hình Đăng nhập
+function handleRegisterSubmit() {
+  const nameInput = document.getElementById('reg-name');
+  if (nameInput && nameInput.value.trim() !== "") {
+    alert("Đăng ký tài khoản thành công! Vui lòng đăng nhập lại.");
+  } else {
+    alert("Vui lòng nhập đầy đủ thông tin để đăng ký!");
+    return;
+  }
+  // Chuyển hướng về màn hình đăng nhập
+  switchAuth('login');
+}
 
-  // Hiển thị màn hình được chọn
-  document.getElementById('tab-' + tabId).style.display = 'block';
-
-  // Cập nhật trạng thái active cho menu
-  const menuItems = document.querySelectorAll('.nav-item');
-  menuItems.forEach(item => item.classList.remove('active'));
-  event.currentTarget.classList.add('active');
+// Xử lý đăng nhập trực tiếp vào Dashboard (dùng cho nút Đăng nhập, Google, Facebook)
+function handleDirectAccess() {
+  // Ẩn màn hình xác thực, hiển thị giao diện chính
+  document.getElementById('login-screen').style.display = 'none';
+  document.getElementById('register-screen').style.display = 'none';
+  document.getElementById('main-app').style.display = 'flex';
 }
