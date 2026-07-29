@@ -9,11 +9,20 @@ body { font-family: 'Inter', sans-serif; background-color: #f8fafc; color: #1e29
 .logo-badge { background: #6366f1; color: white; width: 36px; height: 36px; border-radius: 10px; display: flex; align-items: center; justify-content: center; font-weight: bold; font-size: 18px; box-shadow: 0 4px 12px rgba(99, 102, 241, 0.3); }
 .logo-header h2 { font-size: 20px; font-weight: 700; color: #0f172a; }
 
-.auth-title { margin-bottom: 24px; text-align: center; }
+.auth-title { margin-bottom: 20px; text-align: center; }
 .auth-title h3 { font-size: 22px; font-weight: 700; color: #0f172a; margin-bottom: 4px; }
 .auth-title p { font-size: 14px; color: #64748b; }
 
-.input-group { margin-bottom: 16px; }
+.social-login-group { display: flex; gap: 12px; margin-bottom: 16px; }
+.btn-social { flex: 1; display: flex; align-items: center; justify-content: center; gap: 8px; padding: 10px; border: 1px solid #e2e8f0; background: white; border-radius: 10px; font-size: 14px; font-weight: 600; color: #334155; cursor: pointer; transition: background 0.2s; }
+.btn-social:hover { background: #f8fafc; border-color: #cbd5e1; }
+.social-icon { font-size: 16px; }
+
+.divider { display: flex; align-items: center; text-align: center; margin: 16px 0; color: #94a3b8; font-size: 12px; }
+.divider::before, .divider::after { content: ''; flex: 1; border-bottom: 1px solid #e2e8f0; }
+.divider span { padding: 0 10px; }
+
+.input-group { margin-bottom: 14px; }
 .input-group label { display: block; font-size: 13px; font-weight: 600; margin-bottom: 6px; color: #334155; }
 .input-group input { width: 100%; padding: 12px 14px; border: 1px solid #e2e8f0; border-radius: 10px; font-size: 14px; outline: none; transition: border-color 0.2s; background: #f8fafc; }
 .input-group input:focus { border-color: #6366f1; background: white; }
